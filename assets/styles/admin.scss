@@ -1,0 +1,95 @@
+// Admin-specific styles
+
+// Dashboard cards
+.card {
+    transition: transform 0.2s;
+    
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    .card-title {
+        color: #2c3e50;
+        font-weight: 600;
+    }
+
+    .display-4 {
+        color: #3498db;
+        font-weight: 300;
+    }
+}
+
+// File upload preview
+.file-preview {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-height: 60px;
+    
+    img {
+        max-width: 200px;
+        height: auto;
+    }
+}
+
+// Role badges
+.badge {
+    &.badge-ROLE_USER {
+        background-color: #3498db;
+    }
+    
+    &.badge-ROLE_ADMIN {
+        background-color: #e74c3c;
+    }
+}
+
+// Table improvements
+.table {
+    th {
+        background-color: #f8f9fa;
+    }
+    
+    td {
+        vertical-align: middle;
+    }
+}
+
+// Action buttons
+.btn-group {
+    .btn {
+        margin: 0 2px;
+    }
+}
+
+// Form improvements
+.form-group {
+    margin-bottom: 1.5rem;
+    
+    label {
+        font-weight: 500;
+        color: #2c3e50;
+    }
+}
+
+// Media preview in list/detail views
+.media-preview {
+    max-width: 100px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+// Quick links section
+.list-group-item {
+    transition: background-color 0.2s;
+    
+    i {
+        margin-right: 10px;
+        color: #3498db;
+    }
+    
+    &:hover {
+        background-color: #f8f9fa;
+    }
+}

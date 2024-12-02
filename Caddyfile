@@ -1,0 +1,11 @@
+{
+    email manassehrandriamitsiry@gmail.com
+    acme_ca https://acme-v02.api.letsencrypt.org/directory
+}
+
+:443 {
+    reverse_proxy php:80
+    tls {
+        protocols tls1.2 tls1.3
+    }
+}

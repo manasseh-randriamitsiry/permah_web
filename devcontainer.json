@@ -1,0 +1,59 @@
+{
+  "name": "Symfony Docker Development",
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": ".."
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "editor.formatOnSave": true
+  },
+  "extensions": [
+    "ms-azuretools.vscode-docker",
+    "bmewburn.vscode-intelephense-client",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "xdebug.php-debug",
+    "ms-python.python",
+    "eamodio.gitlens"
+  ],
+  "remoteUser": "root",
+  "forwardPorts": [
+    80,
+    443,
+    5050, // For pgAdmin
+    5432  // For PostgreSQL
+  ],
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind"
+  ],
+  "postCreateCommand": "composer install && yarn install",
+  "remoteEnv": {
+    "DATABASE_URL": "postgresql://app:!ChangeMe!@database:5432/app?serverVersion=15&charset=utf8"
+  },
+  "workspaceFolder": "/workspace",
+  "containerEnv": {
+    "POSTGRES_USER": "app",
+    "POSTGRES_PASSWORD": "!ChangeMe",
+    "POSTGRES_DB": "app"
+  },
+  "portsAttributes": {
+    "80": {
+      "label": "Symfony App"
+    },
+    "5050": {
+      "label": "pgAdmin"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/git:2": {
+      "version": "latest"
+    }
+  }
+}

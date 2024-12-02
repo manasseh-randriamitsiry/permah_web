@@ -1,0 +1,44 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}Dashboard{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Users</h5>
+                    <p class="card-text display-4">{{ userCount }}</p>
+                    <a href="{{ ea_url().setController('App\\\\Controller\\\\Admin\\\\UserCrudController').generateUrl() }}" class="btn btn-primary">Manage Users</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Events</h5>
+                    <p class="card-text display-4">{{ eventCount }}</p>
+                    <a href="{{ ea_url().setController('App\\\\Controller\\\\Admin\\\\EventCrudController').generateUrl() }}" class="btn btn-primary">Manage Events</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Quick Links</h5>
+                    <div class="list-group">
+                        <a href="/api/docs" class="list-group-item list-group-item-action" target="_blank">
+                            <i class="fas fa-book"></i> API Documentation
+                        </a>
+                        <a href="/" class="list-group-item list-group-item-action" target="_blank">
+                            <i class="fas fa-home"></i> Homepage
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
