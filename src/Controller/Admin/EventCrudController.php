@@ -79,6 +79,8 @@ class EventCrudController extends AbstractCrudController
                 ->formatValue(function ($value, $entity) {
                     return $this->formatFileSize($value);
                 }),
+            IntegerField::new('placeNumber')->setColumns(6),
+            TextField::new('preFilledPlace')->setColumns(6),
         ];
     }
 }

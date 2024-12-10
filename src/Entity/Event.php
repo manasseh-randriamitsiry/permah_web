@@ -159,6 +159,14 @@ class Event
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(['event:read', 'event:write'])]
+    private ?int $placeNumber = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['event:read', 'event:write'])]
+    private ?string $preFilledPlace = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -282,5 +290,27 @@ class Event
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    public function getPlaceNumber(): ?int
+    {
+        return $this->placeNumber;
+    }
+
+    public function setPlaceNumber(?int $placeNumber): static
+    {
+        $this->placeNumber = $placeNumber;
+        return $this;
+    }
+
+    public function getPreFilledPlace(): ?string
+    {
+        return $this->preFilledPlace;
+    }
+
+    public function setPreFilledPlace(?string $preFilledPlace): static
+    {
+        $this->preFilledPlace = $preFilledPlace;
+        return $this;
     }
 }

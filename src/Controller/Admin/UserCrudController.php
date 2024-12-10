@@ -14,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -75,6 +76,15 @@ class UserCrudController extends AbstractCrudController
                 ->formatValue(function ($value, $entity) {
                     return count($value) . ' events';
                 });
+        }
+
+        if ($pageName === Crud::PAGE_NEW || $pageName === Crud::PAGE_EDIT) {
+            $fields[] = IntegerField::new('placeNumber')
+                ->setColumns(6)
+                ->setLabel('Place Number');
+            $fields[] = TextField::new('preFilledPlace')
+                ->setColumns(6)
+                ->setLabel('Pre-filled Place');
         }
 
         return $fields;

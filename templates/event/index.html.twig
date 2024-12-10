@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EventController!{% endblock %}
+{% block title %}Event List{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,20 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Event List</h1>
 
-    This friendly message is coming from:
     <ul>
-        <li>Your controller at <code>/app/src/Controller/EventController.php</code></li>
-        <li>Your template at <code>/app/templates/event/index.html.twig</code></li>
+        {% for event in events %}
+            <li>
+                <strong>Name:</strong> {{ event.name }}<br>
+                <strong>Description:</strong> {{ event.description }}<br>
+                <strong>Date:</strong> {{ event.date|date('Y-m-d H:i') }}<br>
+                <strong>Location:</strong> {{ event.location }}<br>
+                <strong>Price:</strong> {{ event.price }}<br>
+                <strong>Place Number:</strong> {{ event.placeNumber }}<br>
+                <strong>Pre-filled Place:</strong> {{ event.preFilledPlace }}<br>
+            </li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}
