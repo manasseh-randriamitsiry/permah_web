@@ -25,6 +25,12 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
+        // Log the user's roles for debugging
+        $roles = $this->getUser() ? $this->getUser()->getRoles() : [];
+        error_log('User roles: ' . implode(', ', $roles));
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $userCount = $this->entityManager->getRepository(User::class)->count([]);
         $eventCount = $this->entityManager->getRepository(Event::class)->count([]);
 

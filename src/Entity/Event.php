@@ -167,6 +167,14 @@ class Event
     #[Groups(['event:read', 'event:write'])]
     private ?string $preFilledPlace = null;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(['event:read', 'event:write'])]
+    private ?int $totalPlaces = null;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(['event:read', 'event:write'])]
+    private ?int $placesTaken = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -313,4 +321,37 @@ class Event
         $this->preFilledPlace = $preFilledPlace;
         return $this;
     }
+    public function getFreePlaces(): ?int
+{
+    $totalPlaces = $this->getPlaceNumber() ?? 0;
+    $placesTaken = $this->getPlacesTaken() ?? 0;
+    $preFilledPlaces = $this->getPreFilledPlace() ? (int)$this->getPreFilledPlace() : 0;
+
+    return $totalPlaces - ($placesTaken + $preFilledPlaces);
+}
+
+    public function getTotalPlaces(): ?int
+    {
+        return $this->totalPlaces;
+    }
+
+    public function setTotalPlaces(?int $totalPlaces): static
+    {
+        $this->totalPlaces = $totalPlaces;
+        return $this;
+    }
+
+    public function getPlacesTaken(): ?int
+    {
+        $preFilledPlaces = $this->getPreFilledPlace() ? (int)$this->getPreFilledPlace() : 0; 
+        $placesTaken = $this->placesTaken ?? 0; // Use the property directly
+        return $placesTaken + $preFilledPlaces; // Return the sum of places taken and pre-filled places
+    }
+
+    public function setPlacesTaken(?int $placesTaken): static
+    {
+        $this->placesTaken = $placesTaken;
+        return $this;
+    }
+    
 }

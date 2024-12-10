@@ -19,8 +19,9 @@
                 <strong>Date:</strong> {{ event.date|date('Y-m-d H:i') }}<br>
                 <strong>Location:</strong> {{ event.location }}<br>
                 <strong>Price:</strong> {{ event.price }}<br>
-                <strong>Place Number:</strong> {{ event.placeNumber }}<br>
-                <strong>Pre-filled Place:</strong> {{ event.preFilledPlace }}<br>
+                <strong>Total Places:</strong> {{ event.placeNumber }}<br>
+                <strong>Places Taken:</strong> {{ event.placesTaken }}<br>
+                <strong>Free Places:</strong> {{ event.getFreePlaces() }}<br>
             </li>
         {% endfor %}
     </ul>
